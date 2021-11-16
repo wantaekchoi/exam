@@ -65,36 +65,36 @@ def getMaxCycleWithTableAndLog(i, j):
         cycles.append(loop)
     return max(cycles)
 
-def getCycle(n, loop):
+def getCycleByRecursive(n, loop):
     if n == 1:
         return loop
-    return getCycle(proc(n), loop+1)
+    return getCycleByRecursive(proc(n), loop+1)
 
 def getMaxCycleByRecursive(i, j):
     cycles = []
     for n in range(i, j+1):
-        cycles.append(getCycle(n, 1))
+        cycles.append(getCycleByRecursive(n, 1))
     return max(cycles)
 
-# input = [(1, 10), (100, 200), (1000, 2000)]
-input = [(1, 100000)]
-# print('without table:')
-# start = time.time()
-# for (i, j) in input:
-#     print(f'{i} {j} {getMaxCycle(i, j)}')
-# print(time.time()-start)
-
+input = [(1, 10), (100, 200), (1000, 2000)]
+# input = [(1, 100000)]
 print('with table:')
 start = time.time()
 for (i, j) in input:
     print(f'{i} {j} {getMaxCycleWithTable(i, j)}')
 print(time.time()-start)
 
-print('with table and log:')
-start = time.time()
-for (i, j) in input:
-    print(f'{i} {j} {getMaxCycleWithTableAndLog(i, j)}')
-print(time.time()-start)
+# print('without table:')
+# start = time.time()
+# for (i, j) in input:
+#     print(f'{i} {j} {getMaxCycle(i, j)}')
+# print(time.time()-start)
+
+# print('with table and log:')
+# start = time.time()
+# for (i, j) in input:
+#     print(f'{i} {j} {getMaxCycleWithTableAndLog(i, j)}')
+# print(time.time()-start)
 
 # print('by recursive:')
 # start = time.time()
